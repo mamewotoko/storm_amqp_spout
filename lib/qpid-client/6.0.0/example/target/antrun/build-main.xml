@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <echo>Qpid Test Profile Properties</echo>
+  <echo>[profile] java-mms.0-10</echo>
+  <echo>[profile.broker.language] java</echo>
+  <echo>[profile.broker.type] internal</echo>
+  <echo>[profile.broker.command] &quot;/Users/tak/dev/storm_amqp_spout/lib/qpid-client/6.0.0/example/bin/qpid-server&quot; -sp @STORE_PATH -st @STORE_TYPE</echo>
+  <echo>[profile.specific.excludes] JavaTransientExcludes Java010Excludes</echo>
+  <echo>[profile.test.excludes] Excludes JavaExcludes java-mms.0-10.excludes JavaTransientExcludes Java010Excludes</echo>
+  <echo>[profile.broker.version] v0_10</echo>
+  <echo>[profile.test.amqp_port_protocols] [&quot;AMQP_0_8&quot;,&quot;AMQP_0_9&quot;,&quot;AMQP_0_9_1&quot;,&quot;AMQP_0_10&quot;]</echo>
+  <echo>[profile.broker.persistent] false</echo>
+  <echo>[profile.virtualhostnode.type] Memory</echo>
+  <echo>[profile.virtualhostnode.context.blueprint] {&quot;type&quot;:&quot;ProvidedStore&quot;,&quot;globalAddressDomains&quot;:&quot;${qpid.globalAddressDomains}&quot;}</echo>
+  <echo>[profile.test_receive_timeout] 1000</echo>
+</target>
+</project>
