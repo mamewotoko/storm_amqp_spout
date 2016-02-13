@@ -1,9 +1,0 @@
-org/apache/qpid/example/OptionParser$Option.class
-org/apache/qpid/example/Hello.class
-org/apache/qpid/example/OptionParser.class
-org/apache/qpid/example/Spout.class
-org/apache/qpid/example/ListSender.class
-org/apache/qpid/example/ListReceiver.class
-org/apache/qpid/example/MapSender.class
-org/apache/qpid/example/MapReceiver.class
-org/apache/qpid/example/Drain.class
