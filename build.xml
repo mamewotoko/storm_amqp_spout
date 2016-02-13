@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="storm_amqp_spout" default="jar" basedir=".">
     <property name="src.dir" value="src"/>
- 
     <property name="classes.dir" value="classes"/>
     <property name="javadoc.dir" value="docs"/>
- 
+
     <property name="jar.name" value="storm_amqp_spout.jar"/>
  
     <property name="lib.jar.dir" value="lib/apache-storm-0.9.6/lib/"/>
+    <property name="build.staging" value="staging" />
+    <property name="staging.jar" value="staging.jar" />
+    <property name="topology.fullname" value="com.mamewo.storm.app.TestTopology" />
 
     <path id="class.path">
       <fileset dir="${lib.jar.dir}" includes="*.jar"/>
@@ -20,9 +22,26 @@
             <classpath refid="class.path"/>
         </javac>
     </target>
- 
-    <target name="jar" depends="compile">
-      <jar jarfile="${jar.name}" basedir="${classes.dir}"/>
+    
+    <target name="staging" depends="compile">
+      <mkdir dir="${build.staging}" />
+      <copy todir="${build.staging}">
+	<fileset dir="lib/qpid-client/6.0.0/lib/" includes="*.jar"/>
+      </copy>
+      <jar jarfile="${staging.jar}">
+	<zipgroupfileset dir="${build.staging}" includes="**/*.jar" />
+      </jar>
+    </target>
+
+    <target name="jar" depends="staging">
+      <jar basedir="${classes.dir}"
+	   jarfile="${jar.name}">
+	<manifest>
+	  <attribute name="Main-Class" value="${topology.fullname}"/>
+	</manifest>
+	
+	<zipfileset src="${staging.jar}" excludes="META-INF/**/*"/>
+      </jar>
     </target>
  
     <target name="javadoc">
@@ -36,5 +55,7 @@
         <delete dir="${classes.dir}"/>
         <delete dir="${javadoc.dir}"/>
         <delete file="${jar.name}"/>
+	<delete dir="${staging.jar}"/>
+	<delete dir="${build.staging}"/>
     </target>
 </project>
