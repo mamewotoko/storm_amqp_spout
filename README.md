@@ -1,6 +1,12 @@
 Storm spout using amqp as data source
 =====================================
 
+Install libraries
+------------------
+```
+sh setup.sh
+```
+
 buiid
 ------
 ```
@@ -15,7 +21,6 @@ run
 TODO
 ----
 * use maven
-
 
 ----
 Takashi Masuyama < mamewotoko@gmail.com >
